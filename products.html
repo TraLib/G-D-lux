@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&D LUX - Premium Gold Collection</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* keep design same — just make header flex so cart fits inline */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    .cart-icon {
+      font-size: 22px;
+      color: gold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 10px gold;
+    }
+
+    #cart-count {
+      background: gold;
+      color: #000;
+      font-weight: bold;
+      border-radius: 50%;
+      padding: 2px 8px;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Particle Canvas -->
+  <canvas id="particles"></canvas>
+
+  <header>
+    <h1>G&D LUX</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="SignIn.html" class="SignIn-link">SignIn</a>
+    </nav>
+
+    <!-- 🛒 Cart moved here -->
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    Welcome to G&D LUX - The Premium Online Gold Collection
+  </section>
+
+  <!-- Product Sections -->
+  <section class="products" id="products">
+    <div class="product-card" data-name="Luxury Gold Ring" data-price="49999">
+      <div class="product-view">
+        <model-viewer src="models/diamond_ring_3d_print_ready.glb" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Luxury Gold Ring</h2>
+      <p>₹ 49,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Royal Gold Necklace" data-price="125000">
+      <div class="product-view">
+        <model-viewer src="models/necklace_b.glb" alt="Gold Necklace" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Royal Gold Necklace</h2>
+      <p>₹ 1,25,000</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Elegant Gold Bracelet" data-price="74999">
+      <div class="product-view">
+        <model-viewer src="models/kings_crown.glb" alt="Gold Bracelet" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Elegant Gold Bracelet</h2>
+      <p>₹ 74,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="product-card" data-name="Luxury Gold Key" data-price="49999">
+      <div class="product-view">
+        <model-viewer src="models/old_gold_key.glb" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Luxury Gold Key</h2>
+      <p>₹ 49,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Hoxxoh Gold" data-price="125000">
+      <div class="product-view">
+        <model-viewer src="models/hoxxoh_gold_gold.glb" alt="Gold Necklace" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Hoxxoh Gold</h2>
+      <p>₹ 1,25,000</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Skull Salazar Gold" data-price="74999">
+      <div class="product-view">
+        <model-viewer src="models/skull_salazar_downloadable.glb" alt="Gold Bracelet" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Skull Salazar Gold</h2>
+      <p>₹ 74,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="product-card" data-name="Gold McLaren Car" data-price="49999">
+      <div class="product-view">
+        <model-viewer src="models/mclaren_white_with_gold_free.glb" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Gold McLaren Car</h2>
+      <p>₹ 49,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Gold Sport Cup" data-price="125000">
+      <div class="product-view">
+        <model-viewer src="models/gold_sport_cup.glb" alt="Gold Necklace" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Gold Sport Cup</h2>
+      <p>₹ 1,25,000</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+
+    <div class="product-card" data-name="Antique Gold Vol-13" data-price="74999">
+      <div class="product-view">
+        <model-viewer src="models/vol-13_yg_gold.glb" alt="Gold Bracelet" auto-rotate camera-controls></model-viewer>
+      </div>
+      <h2>Antique Gold Vol-13</h2>
+      <p>₹ 74,999</p>
+      <button class="add">Add to Cart</button>
+      <button class="buy">Buy Now</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 G&D LUX | Crafted with Elegance & Purity
+  </footer>
+
+  <!-- Particle + Cart Script -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 120;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 215, 0, 0.8)';
+        ctx.shadowColor = '#FFD700';
+        ctx.shadowBlur = 15;
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    init();
+    animate();
+
+    /* === CART SYSTEM === */
+    function loadCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cart-count").textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let found = cart.find(p => p.name === name);
+      if(found){ found.qty++; } 
+      else { cart.push({ name, price, qty:1 }); }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCartCount();
+      alert(name + " added to cart!");
+    }
+
+    function buyNow(name, price) {
+      localStorage.setItem("cart", JSON.stringify([{ name, price, qty:1 }] ));
+      window.location.href = "cart.html";
+    }
+
+    document.querySelectorAll(".product-card").forEach(card => {
+      let name = card.dataset.name;
+      let price = parseInt(card.dataset.price);
+
+      card.querySelector(".add").addEventListener("click", () => addToCart(name, price));
+      card.querySelector(".buy").addEventListener("click", () => buyNow(name, price));
+    });
+
+    window.onload = loadCartCount;
+  </script>
+</body>
+</html>

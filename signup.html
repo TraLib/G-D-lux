@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up - G&D LUX</title>
+<link rel="stylesheet" href="auth.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #FFD700;
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* Particle canvas */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #000;
+}
+
+
+
+  header {
+  background: rgba(0,0,0,0.5);           /* semi-transparent */
+  backdrop-filter: blur(15px);           /* glass effect */
+  -webkit-backdrop-filter: blur(15px);
+  color: #FFD700;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-radius: 0 0 15px 15px;
+  transition: all 0.3s ease;
+}
+header:hover {
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-align: center;  /* centers text if logo only */
+}
+
+header h1:hover {
+  transform: scale(1.05);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header nav a {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+header nav a:hover {
+  color: #FFC800;
+}
+footer {
+  width: 100%;
+  padding: 1rem 2rem;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  color: #ffd700;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+  nav a {
+    margin: 0 12px;
+    color: #ffd700;
+    text-decoration: none;
+  }
+
+  .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: rgba(68, 64, 64, 0.15);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(209, 150, 60, 0.4);
+  width: 100%;
+  max-width: 350px;
+  color: #fff;
+  text-align: center;
+}
+
+
+  .input-group {
+    margin-bottom: 18px;
+    text-align: left;
+    position: relative;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 10px 40px 10px 12px; /* padding for eye icon */
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    user-select: none;
+  }
+
+  .btn {
+    background: #ffd700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .btn:hover {
+    background: #e5c100;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <h2>G&D LUX</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="signin.html">Sign In</a>
+  </nav>
+</header>
+
+<div class="content">
+  <div class="card">
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" name="fullname" required>
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" id="password" required>
+        <span class="toggle-password" onclick="togglePassword('password', this)">👁</span>
+      </div>
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁</span>
+      </div>
+      <p class="error" id="errorMsg"></p>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="signin.html">Sign in</a></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 G&D LUX
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.3/tsparticles.bundle.min.js"></script>
+<script>
+  // Show/Hide password
+  function togglePassword(fieldId, icon) {
+    const field = document.getElementById(fieldId);
+    if (field.type === "password") {
+      field.type = "text";
+      icon.textContent = "🙈";
+    } else {
+      field.type = "password";
+      icon.textContent = "👁";
+    }
+  }
+
+  // Signup form validation
+  document.getElementById('signupForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const fullname = this.fullname.value.trim();
+    const email = this.email.value.trim();
+    const password = this.password.value;
+    const confirmPassword = this.confirmPassword.value;
+    const errorMsg = document.getElementById('errorMsg');
+    errorMsg.textContent = "";
+
+    if(password !== confirmPassword){
+      errorMsg.textContent = "Passwords do not match!";
+      return;
+    }
+
+    try{
+      const res = await fetch('http://localhost:5000/signup', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ fullname,email,password })
+      });
+      const data = await res.json();
+      if(res.ok){
+        alert(data.message);
+        window.location.href = "otp.html?email=" + encodeURIComponent(email);
+      } else {
+        errorMsg.textContent = data.message;
+      }
+    } catch(err){
+      errorMsg.textContent = "Server error! Try again later.";
+    }
+  });
+
+  // Golden particle background
+  tsParticles.load("tsparticles", {
+    background: { color: "#000" },
+    particles: {
+      number: { value: 100 },
+      color: { value: "#ffd700" },
+      shape: { type: "circle" },
+      opacity: { value: 0.7 },
+      size: { value: 3 },
+      move: { enable: true, speed: 1.5 }
+    }
+  });
+
+
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 120;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 215, 0, 0.8)';
+        ctx.shadowColor = '#FFD700';
+        ctx.shadowBlur = 15;
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    init();
+    animate();
+</script>
+
+</body>
+</html>

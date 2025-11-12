@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G&D Lux - Jewelry</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+<canvas id="particles-js"></canvas>
+
+<!-- Hero Slider moved to top -->
+<div class="slider">
+<div class="slide active"><img src="images/unsplash-thumb-01.jpg" alt="Jewelry 1"><div class="caption">Luxury Redefined</div></div>
+<div class="slide"><img src="images/unsplash-image-02.jpg" alt="Jewelry 2"><div class="caption">Elegance in Every Detail</div></div>
+</div>
+
+<header>
+<h1>G&D Lux</h1>
+<div class="menu-icon" id="menuToggle">
+<div></div><div></div><div></div>
+</div>
+<nav>
+<ul id="navMenu">
+<li><a href="#">Home</a></li>
+<li><a href="#services">Service</a></li>
+<li><a href="#rates">Live Rates</a></li>
+<li><a href="#journey">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="index1.html">Shopping</a></li>
+<li><a href="admin/admin_login.html">Admin</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Live Gold & Diamond Rates -->
+<section id="rates" class="live-rates">
+<h2>🔴 Live Precious Metal Rates</h2>
+<div class="rates-container">
+  <div class="rate-card">
+    <h3>Gold 24K</h3>
+    <div class="price" id="gold24">₹6,750</div>
+    <div class="unit">per gram</div>
+    <div class="change positive" id="gold24Change">▲ ₹25</div>
+  </div>
+  <div class="rate-card">
+    <h3>Gold 22K</h3>
+    <div class="price" id="gold22">₹6,200</div>
+    <div class="unit">per gram</div>
+    <div class="change positive" id="gold22Change">▲ ₹23</div>
+  </div>
+  <div class="rate-card">
+    <h3>Gold 18K</h3>
+    <div class="price" id="gold18">₹5,060</div>
+    <div class="unit">per gram</div>
+    <div class="change negative" id="gold18Change">▼ ₹15</div>
+  </div>
+  <div class="rate-card">
+    <h3>Diamond</h3>
+    <div class="price" id="diamond">₹4,50,000</div>
+    <div class="unit">per carat</div>
+    <div class="change positive" id="diamondChange">▲ ₹5,000</div>
+  </div>
+  <div class="rate-card">
+    <h3>Silver</h3>
+    <div class="price" id="silver">₹780</div>
+    <div class="unit">per gram</div>
+    <div class="change positive" id="silverChange">▲ ₹8</div>
+  </div>
+  <div class="rate-card">
+    <h3>Platinum</h3>
+    <div class="price" id="platinum">₹2,850</div>
+    <div class="unit">per gram</div>
+    <div class="change neutral" id="platinumChange">● ₹0</div>
+  </div>
+</div>
+<div class="last-updated">
+  Last updated: <span id="lastUpdated">Today 10:30 AM</span> |
+  <span style="color:gold; cursor:pointer;" onclick="refreshRates()">🔄 Refresh</span>
+</div>
+</section>
+
+<!-- Services -->
+<section id="services">
+<h2>✨ Our Exclusive Services ✨</h2>
+<div class="services-container">
+<div class="services">
+<div class="service">
+  <div class="service-icon">💎</div>
+  <h3>Premium 3D Visualization</h3>
+  <p>Experience our revolutionary 3D jewelry models with photorealistic rendering. Rotate, zoom, and examine every angle before purchase. Our advanced technology brings each piece to life with stunning detail and precision.</p>
+ <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">
+  Interactive 360° Views
+</div>
+
+
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Virtual Try-On Technology</div>
+</div>
+<div class="service">
+  <div class="service-icon">🎨</div>
+  <h3>Bespoke Customization</h3>
+  <p>Collaborate with our master artisans to create one-of-a-kind pieces. From concept to creation, we transform your vision into wearable art using traditional techniques blended with modern innovation.</p>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Personal Design Consultation</div>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Lifetime Warranty</div>
+</div>
+<div class="service">
+  <div class="service-icon">🌍</div>
+  <h3>Global White-Glove Delivery</h3>
+  <p>Experience luxury delivery service worldwide with our premium concierge. Each piece is hand-delivered with personalized presentation, complete with authenticity certificates and care instructions.</p>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Insured Worldwide Shipping</div>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Customs Clearance Included</div>
+</div>
+<div class="service">
+  <div class="service-icon">👑</div>
+  <h3>Royal Concierge Support</h3>
+  <p>Our dedicated jewelry concierges provide 24/7 white-glove service. From styling advice to maintenance scheduling, we're with you every step of your luxury jewelry journey.</p>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Dedicated Personal Advisor</div>
+  <div style="color: gold; font-weight: bold; text-shadow: 0 0 10px gold;">Complimentary Cleaning & Maintenance</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Journey -->
+<section id="journey" class="journey-section">
+<h2>Our Journey</h2>
+<div class="journey-container">
+<div class="journey-roadmap">
+<div class="journey-step">
+  <div class="journey-year">1981</div>
+  <div class="journey-card">
+    <div class="journey-milestone">Founded</div>
+    <h3>The Beginning</h3>
+    <p>Started as a small family workshop in the heart of the jewelry district, crafting unique pieces with traditional techniques passed down through generations.</p>
+  </div>
+</div>
+<div class="journey-step">
+  <div class="journey-year">1995</div>
+  <div class="journey-card">
+    <div class="journey-milestone">First Store</div>
+    <h3>Expansion</h3>
+    <p>Opened our first flagship boutique, showcasing our growing collection and establishing our presence in the luxury jewelry market with exceptional customer service.</p>
+  </div>
+</div>
+<div class="journey-step">
+  <div class="journey-year">2010</div>
+  <div class="journey-card">
+    <div class="journey-milestone">Global Brand</div>
+    <h3>International Reach</h3>
+    <p>Became a recognized international brand, expanding our operations worldwide and delivering exquisite jewelry to discerning clients across the globe.</p>
+  </div>
+</div>
+<div class="journey-step">
+  <div class="journey-year">2025</div>
+  <div class="journey-card">
+    <div class="journey-milestone">Excellence</div>
+    <h3>Industry Leader</h3>
+    <p>Recognized as a leading luxury jewelry brand, setting trends and standards in elegance while maintaining our commitment to exceptional craftsmanship and innovation.</p>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<h2>Contact Us</h2>
+<div class="contact-container">
+<div class="map"><iframe src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe></div>
+<div class="contact-info">
+<h3>Main Shop</h3>
+<p><strong>Address:</strong> 123 Luxury Street, New York</p>
+<p><strong>Phone:</strong> +1 234 567 890</p>
+<p><strong>Email:</strong> support@gdlux.com</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 G&D Lux | All Rights Reserved | <a href="#" style="color:gold;">Terms & Conditions</a></p>
+</footer>
+
+<script>
+// Live rates refresh function
+function refreshRates() {
+    const refreshBtn = document.querySelector('.last-updated span:last-child');
+    const originalText = refreshBtn.innerHTML;
+    refreshBtn.innerHTML = '⟳ Refreshing...';
+
+    // Try to fetch live rates from API
+    fetchLiveRates()
+        .then(() => {
+            refreshBtn.innerHTML = '✅ Refreshed!';
+            setTimeout(() => {
+                refreshBtn.innerHTML = originalText;
+            }, 2000);
+        })
+        .catch(error => {
+            console.log('API failed, using simulation:', error);
+            simulateLiveRates();
+            refreshBtn.innerHTML = '✅ Simulated';
+            setTimeout(() => {
+                refreshBtn.innerHTML = originalText;
+            }, 2000);
+        });
+}
+
+// Fetch live rates from metal price API
+async function fetchLiveRates() {
+    try {
+        // Using our local API for live rates
+        const response = await fetch('http://localhost:5000/api/metal-rates');
+
+        if (!response.ok) {
+            throw new Error('API request failed');
+        }
+
+        const data = await response.json();
+
+        // Update gold prices (API returns rates per ounce, convert to per gram)
+        if (data.rates && data.rates.XAU) {
+            const goldPerOunce = data.rates.XAU;
+            const goldPerGram = goldPerOunce / 31.1035; // Convert ounce to gram
+
+            // Gold 24K (99.9% pure)
+            const gold24Price = Math.round(goldPerGram * 0.999);
+            document.getElementById('gold24').textContent = `₹${gold24Price.toLocaleString()}`;
+
+            // Gold 22K (91.6% pure)
+            const gold22Price = Math.round(goldPerGram * 0.916);
+            document.getElementById('gold22').textContent = `₹${gold22Price.toLocaleString()}`;
+
+            // Gold 18K (75% pure)
+            const gold18Price = Math.round(goldPerGram * 0.75);
+            document.getElementById('gold18').textContent = `₹${gold18Price.toLocaleString()}`;
+
+            // Update silver price
+            if (data.rates.XAG) {
+                const silverPerOunce = data.rates.XAG;
+                const silverPerGram = silverPerOunce / 31.1035;
+                const silverPrice = Math.round(silverPerGram);
+                document.getElementById('silver').textContent = `₹${silverPrice.toLocaleString()}`;
+            }
+
+            // Update platinum price
+            if (data.rates.XPT) {
+                const platinumPerOunce = data.rates.XPT;
+                const platinumPerGram = platinumPerOunce / 31.1035;
+                const platinumPrice = Math.round(platinumPerGram);
+                document.getElementById('platinum').textContent = `₹${platinumPrice.toLocaleString()}`;
+            }
+
+            // Simulate diamond price (no reliable free API)
+            updateDiamondPrice();
+
+            // Update price changes and last updated time
+            updatePriceChanges();
+            updateLastUpdatedTime();
+
+            return true;
+        }
+    } catch (error) {
+        console.error('Error fetching live rates:', error);
+        throw error;
+    }
+}
+
+// Simulate live rates for demo purposes
+function simulateLiveRates() {
+    const basePrices = {
+        gold24: 6750,
+        gold22: 6200,
+        gold18: 5060,
+        silver: 780,
+        platinum: 2850,
+        diamond: 450000
+    };
+
+    // Simulate price fluctuations (-2% to +2%)
+    Object.keys(basePrices).forEach(metal => {
+        const element = document.getElementById(metal);
+        if (element) {
+            const currentPrice = parseInt(element.textContent.replace(/[^\d]/g, ''));
+            const fluctuation = (Math.random() - 0.5) * 0.04; // ±2%
+            const newPrice = Math.round(currentPrice * (1 + fluctuation));
+            element.textContent = `₹${newPrice.toLocaleString()}`;
+        }
+    });
+
+    // Update price changes and last updated time
+    updatePriceChanges();
+    updateLastUpdatedTime();
+}
+
+// Update diamond price (simulated)
+function updateDiamondPrice() {
+    const diamondElement = document.getElementById('diamond');
+    const currentPrice = parseInt(diamondElement.textContent.replace(/[^\d]/g, ''));
+    const fluctuation = (Math.random() - 0.5) * 0.02; // ±1%
+    const newPrice = Math.round(currentPrice * (1 + fluctuation));
+    diamondElement.textContent = `₹${newPrice.toLocaleString()}`;
+}
+
+// Update price change indicators
+function updatePriceChanges() {
+    const rateCards = document.querySelectorAll('.rate-card');
+
+    rateCards.forEach(card => {
+        const priceElement = card.querySelector('.price');
+        const changeElement = card.querySelector('.change');
+
+        if (priceElement && changeElement) {
+            const currentPrice = parseInt(priceElement.textContent.replace(/[^\d]/g, ''));
+
+            // Simulate price change (random for demo)
+            const changePercent = (Math.random() - 0.5) * 0.02; // ±1%
+            const changeAmount = Math.round(currentPrice * changePercent);
+
+            if (Math.abs(changeAmount) > 0) {
+                const isPositive = changeAmount > 0;
+                const symbol = isPositive ? '▲' : '▼';
+                const changeClass = isPositive ? 'positive' : 'negative';
+
+                changeElement.textContent = `${symbol} ₹${Math.abs(changeAmount)}`;
+                changeElement.className = `change ${changeClass}`;
+            }
+        }
+    });
+}
+
+// Update last updated timestamp
+function updateLastUpdatedTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-IN', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+
+    document.getElementById('lastUpdated').textContent = `Today ${timeString}`;
+}
+
+// Auto-refresh rates every 2 seconds
+setInterval(() => {
+    refreshRates();
+}, 2 * 1000);
+
+// Simple slider animation
+let slides=document.querySelectorAll('.slide');let index=0;
+setInterval(()=>{
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+},4000);
+
+// Journey animation on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const journeySteps = document.querySelectorAll('.journey-step');
+
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, observerOptions);
+
+    journeySteps.forEach(step => {
+        observer.observe(step);
+    });
+});
+</script>
+
+<!-- tsParticles -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+<script>
+tsParticles.load("particles-js",{
+particles:{
+number:{value:80},
+color:{value:"#FFD700"},
+shape:{type:"circle"},
+opacity:{value:0.7},
+size:{value:3},
+move:{enable:true,speed:1,direction:"none",out_mode:"bounce"},
+links:{enable:true,distance:120,color:"#FFD700",opacity:0.4,width:1}
+}});
+</script>
+</body>
+</html>

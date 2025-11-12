@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - G&D LUX</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #FFD700;
+      overflow-x: hidden;
+    }
+   /* ===== HEADER ===== */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      color: #FFD700;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 0 0 15px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 800;
+      text-shadow: 0 0 2px #FFD700, 0 0 15px #FFA500;
+      transition: all 0.3s ease;
+    }
+      header:hover {
+      box-shadow: 0 0 30px rgba(255,215,0,0.6);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      margin: 0;
+    }
+
+ 
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #e6e6e6;
+      opacity: 0.9;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      background: #FFD700;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      margin-top: 2rem;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+    .btn:hover {
+      background: #ffcc00;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+      transform: scale(1.05);
+    }
+
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      text-shadow: 0 0 10px #FFD700;
+      color: #fff;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid #FFD700;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .about-container h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    .about-container p {
+      color: #FFD700;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid #FFD700;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Particle Canvas */
+    canvas#particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle Background -->
+  <canvas id="particles"></canvas>
+
+  <header>
+    <h1>G&D LUX</h1>
+    <nav>
+     <a href="index1.html">Home</a>
+    <a href="products">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="SignIn.html" class="SignIn-link">SignIn</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="about-container">
+      <h2>About Our Company</h2>
+      <p>
+        Welcome to <strong>G&D LUX</strong> – a name that stands for glamour, grace, and golden luxury.
+        Since our inception, we have been driven by a single mission: to create jewellery that combines 
+        modern sophistication with timeless tradition.
+      </p>
+      <p>
+        At G&D LUX, every piece is crafted with precision and passion by our master artisans.
+        From breathtaking gold necklaces to elegant diamond rings, our designs celebrate individuality,
+        making every customer feel special.
+      </p>
+      <p>
+        We pride ourselves on using only the highest purity gold, ethically sourced materials,
+        and offering 100% authenticity guarantee. Our vision is to redefine luxury shopping by
+        blending world-class craftsmanship with cutting-edge online technology.
+      </p>
+      <p>
+        G&D LUX is more than just a jewellery brand – it is a celebration of love, tradition,
+        and unforgettable moments.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 G&D LUX | Crafted with Elegance & Purity
+  </footer>
+
+  <!-- Moving Golden Particles -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.2;
+        this.speedY = (Math.random() - 0.5) * 1.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 215, 0, 0.7)';
+        ctx.shadowColor = '#FFD700';
+        ctx.shadowBlur = 10;
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    init();
+    animate();
+  </script>
+</body>
+</html>

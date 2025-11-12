@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTP Verification - G&D LUX</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #FFD700;
+    background: #000;
+    overflow: hidden;
+  }
+
+  #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  header {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
+    color: #FFD700;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 0 0 15px 15px;
+  }
+
+  header h2 {
+    font-size: 1.8rem;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    z-index: 1;
+    position: relative;
+  }
+
+  .card {
+    background: rgba(68, 64, 64, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(209, 150, 60, 0.4);
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .card h1 {
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 0 0 15px #FFD700;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .btn {
+    background: #FFD700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #e5c100;
+    transform: scale(1.05);
+  }
+
+  footer {
+    width: 100%;
+    padding: 0.8rem;
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    color: #ffd700;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <h2>G&D LUX</h2>
+</header>
+
+<div class="content">
+  <div class="card">
+    <h1>OTP Verification</h1>
+    <form id="otpForm">
+      <div class="input-group">
+        <input type="text" id="otp" placeholder="Enter OTP" required maxlength="6">
+      </div>
+      <button type="submit" class="btn">Verify OTP</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 G&D LUX
+</footer>
+
+<script>
+// Moving gold particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 100;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 1.5;
+    this.speedY = (Math.random() - 0.5) * 1.5;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 215, 0, 0.8)';
+    ctx.shadowColor = '#FFD700';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+  }
+}
+
+function init() {
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+init();
+animate();
+
+// OTP check
+document.getElementById("otpForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const otp = document.getElementById("otp").value.trim();
+
+  if (otp === "111") {
+    alert("✅ OTP Verified Successfully!");
+    window.location.href = "signin.html";
+  } else {
+    alert("❌ Invalid OTP, try again.");
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - G&D LUX</title>
+  <link rel="stylesheet" href="auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #FFD700;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Particle canvas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      color: #FFD700;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-radius: 0 0 15px 15px;
+      transition: all 0.3s ease;
+    }
+    header:hover {
+      box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
+    }
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    header h2:hover {
+      transform: scale(1.05);
+    }
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    header nav a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    header nav a:hover {
+      color: #FFC800;
+    }
+
+    footer {
+      width: 100%;
+      padding: 1rem 2rem;
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      color: #ffd700;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    /* Centering container */
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 120px); /* header + footer space */
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2; /* above particles */
+    }
+
+    .card {
+      background: rgba(68, 64, 64, 0.15);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(209, 150, 60, 0.4);
+      width: 100%;
+      max-width: 350px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .btn {
+      background: #ffd700;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #e5c100;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <h2>G&D LUX</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="signup.html">Sign Up</a>
+  </nav>
+</header>
+
+<div class="content">
+  <div class="card">
+    <h1>Sign In</h1>
+    <form id="signinForm">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" required>
+      </div>
+      <p class="error" id="errorMsg"></p>
+      <button type="submit" class="btn">Sign In</button>
+    </form>
+    <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 G&D LUX
+</footer>
+
+<script>
+// Animated gold particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 120;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 1.5;
+    this.speedY = (Math.random() - 0.5) * 1.5;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 215, 0, 0.8)';
+    ctx.shadowColor = '#FFD700';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+  }
+}
+
+function init() {
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+}
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+init();
+animate();
+
+// Sign In form handler
+document.getElementById('signinForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = this.email.value.trim();
+  const password = this.password.value;
+  const errorMsg = document.getElementById('errorMsg');
+  errorMsg.textContent = "";
+
+  try {
+    const response = await fetch('http://localhost:5000/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // ✅ Show elegant gold success popup
+      alert(`✨ Welcome ${data.fullname || 'Back'}!`);
+      // Redirect to homepage
+      window.location.href = "index.html";
+    } else {
+      errorMsg.textContent = data.message || "Invalid credentials!";
+    }
+
+  } catch (err) {
+    console.error(err);
+    errorMsg.textContent = "⚠️ Server error! Try again later.";
+  }
+});
+</script>
+
+
+</body>
+</html>
