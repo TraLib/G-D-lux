@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - G&D Lux</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Chart.js for Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- tsParticles for Gold Particles -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+<style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #0a0a0a, #1a1a1a 80%);
+        color: #fff;
+        padding: 20px;
+        overflow-x: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Background particles canvas */
+    #tsparticles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* HEADER */
+    .header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 15px;
+        padding: 20px 30px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(255,215,0,0.15);
+    }
+    .header h1 {
+        font-size: 1.8rem;
+        background: linear-gradient(45deg, gold, orange);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .logout-btn {
+        background: linear-gradient(45deg, #ff4444, #cc0000);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .logout-btn:hover {
+        background: linear-gradient(45deg, #ff6666, #e60000);
+        transform: scale(1.05);
+    }
+
+    /* DASHBOARD GRID */
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* SECTIONS */
+    .section {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 15px;
+        padding: 20px;
+        backdrop-filter: blur(8px);
+        transition: 0.3s;
+        position: relative;
+        z-index: 2;
+    }
+    .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(255,215,0,0.2);
+    }
+    .section h2 {
+        color: gold;
+        margin-bottom: 20px;
+        border-bottom: 2px solid gold;
+        padding-bottom: 10px;
+    }
+
+    /* CARDS */
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .stat-card {
+        flex: 1;
+        text-align: center;
+        background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,215,0,0.1));
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,215,0,0.3);
+    }
+    .stat-card h3 {
+        color: gold;
+        font-size: 1.2rem;
+    }
+    .stat-card p {
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    /* PRODUCT, USER, ORDER LISTS */
+    .item {
+        background: rgba(255,255,255,0.07);
+        padding: 12px;
+        border-left: 4px solid gold;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .item h4 { color: gold; margin-bottom: 4px; }
+
+    /* FORM */
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+    }
+    button {
+        background: linear-gradient(45deg, gold, orange);
+        color: #000;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        box-shadow: 0 0 12px rgba(255,215,0,0.6);
+    }
+
+    /* CHART */
+    canvas { width: 100%; height: 200px; }
+
+    /* EDIT PRODUCT MODAL */
+    .modal {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+    }
+    .modal-content {
+        background: rgba(30,30,30,0.9);
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        border: 1px solid gold;
+    }
+    .modal-content h3 {
+        color: gold;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Gold Particle Background -->
+<div id="tsparticles"></div>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Admin Dashboard - G&D Lux</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- STAT OVERVIEW -->
+<div class="section">
+    <h2>Quick Overview</h2>
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total Sales</h3>
+            <p>₹1,25,000</p>
+        </div>
+        <div class="stat-card">
+            <h3>Active Users</h3>
+            <p>254</p>
+        </div>
+        <div class="stat-card">
+            <h3>Products in Stock</h3>
+            <p>86</p>
+        </div>
+    </div>
+</div>
+
+<!-- ANALYTICS SECTION -->
+<div class="section">
+    <h2>Sales Analytics</h2>
+    <canvas id="salesChart"></canvas>
+</div>
+
+<!-- MAIN DASHBOARD SECTIONS -->
+<div class="dashboard">
+    <div class="section">
+        <h2>Product Management</h2>
+        <form id="addProductForm">
+            <input name="productCode" placeholder="Product Code" required>
+            <input name="productName" placeholder="Product Name" required>
+            <textarea name="productDescription" placeholder="Description"></textarea>
+            <select name="metalType" required>
+                <option value="">Select Metal</option>
+                <option>Gold</option>
+                <option>White Gold</option>
+                <option>Platinum</option>
+            </select>
+            <input name="metalPurity" placeholder="Purity (e.g. 18)" type="number" required>
+            <input name="weightGrams" placeholder="Weight (grams)" type="number" required>
+            <input name="price" placeholder="Price" type="number" required>
+            <input name="stockQuantity" placeholder="Stock Quantity" type="number" required>
+            <button type="submit">Add Product</button>
+        </form>
+        <div id="productsList" style="margin-top:15px;"></div>
+    </div>
+
+    <div class="section">
+        <h2>Users</h2>
+        <div id="usersList"></div>
+    </div>
+
+    <div class="section">
+        <h2>Orders</h2>
+        <div id="ordersList"></div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="editModal">
+    <div class="modal-content">
+        <h3>Edit Product</h3>
+        <form id="editForm">
+            <input type="hidden" id="editId">
+            <input id="editName" placeholder="Product Name">
+            <input id="editPrice" placeholder="Price" type="number">
+            <input id="editStock" placeholder="Stock" type="number">
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="closeModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<script>
+/* --- Chart.js --- */
+const ctx = document.getElementById('salesChart');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Monthly Sales (₹)',
+            data: [15000, 20000, 18000, 22000, 25000, 30000],
+            borderColor: 'gold',
+            backgroundColor: 'rgba(255,215,0,0.2)',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: { plugins: { legend: { labels: { color: '#fff' } } }, scales: { x: { ticks: { color: '#fff' } }, y: { ticks: { color: '#fff' } } } }
+});
+
+/* --- Dummy Loaders --- */
+function loadProducts() {
+    const list = document.getElementById('productsList');
+    list.innerHTML = `
+        <div class="item"><h4>GDLX-101</h4><p>Gold Ring - ₹45000 | Stock: 10</p>
+        <button onclick="openEdit(1)">Edit</button>
+        <button onclick="deleteItem('Product',1)">Delete</button></div>
+        <div class="item"><h4>GDLX-202</h4><p>Platinum Necklace - ₹85000 | Stock: 5</p>
+        <button onclick="openEdit(2)">Edit</button>
+        <button onclick="deleteItem('Product',2)">Delete</button></div>`;
+}
+function loadUsers() {
+    document.getElementById('usersList').innerHTML = `
+        <div class="item"><h4>Priya Sharma</h4><p>Email: priya@gdlux.com</p></div>
+        <div class="item"><h4>Rahul Mehta</h4><p>Email: rahul@gdlux.com</p></div>`;
+}
+function loadOrders() {
+    document.getElementById('ordersList').innerHTML = `
+        <div class="item"><h4>INV-1023</h4><p>Customer: Priya Sharma | Total: ₹45,000 | Status: Paid</p></div>
+        <div class="item"><h4>INV-1024</h4><p>Customer: Rahul Mehta | Total: ₹85,000 | Status: Pending</p></div>`;
+}
+
+/* --- Edit Modal --- */
+function openEdit(id) {
+    document.getElementById('editModal').style.display = 'flex';
+    document.getElementById('editId').value = id;
+}
+function closeModal() {
+    document.getElementById('editModal').style.display = 'none';
+}
+function deleteItem(type,id){
+    if(confirm(`Delete this ${type}?`)) alert(`${type} deleted successfully.`);
+}
+function logout() {
+    alert('Logged out successfully.');
+}
+
+/* --- Initialize Data --- */
+loadProducts();
+loadUsers();
+loadOrders();
+
+/* --- tsParticles Gold Background --- */
+tsParticles.load("tsparticles", {
+    background: { color: { value: "transparent" } },
+    particles: {
+        number: { value: 80 },
+        color: { value: "#FFD700" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6, random: true },
+        size: { value: { min: 1, max: 3 } },
+        move: {
+            enable: true,
+            speed: 1.2,
+            direction: "none",
+            random: false,
+            straight: false,
+            outModes: "out"
+        },
+        links: {
+            enable: true,
+            color: "#FFD700",
+            distance: 150,
+            opacity: 0.3,
+            width: 1
+        }
+    },
+    interactivity: {
+        events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+        modes: { repulse: { distance: 100 } }
+    },
+    detectRetina: true
+});
+</script>
+</body>
+</html>
